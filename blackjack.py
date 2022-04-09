@@ -2,7 +2,6 @@ from app import betting
 from app import hit_stand
 from app import win_lose
 from app import menu
-from app import leaderboard_class as leaderboard
 from app import game_class as game
 
 
@@ -68,6 +67,6 @@ while True:
         print('Invalid Option')
 
 # Loading results to leaderboard if user did not exit the menu before a game new_game.started
-if game.new_game.exit == False:
-    leaderboard.results.update_total(
-        game.new_game.user['Name'], win_lose.total_wins, win_lose.total_losses)
+# if game.new_game.exit == False:
+#     leaderboard.results.update_total(
+#         game.new_game.user['Name'], win_lose.total_wins, win_lose.total_losses)

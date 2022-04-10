@@ -1,4 +1,5 @@
 from app import game_class as game
+from app.display_cards import face_up
 
 ############ Update Scores #############
 
@@ -6,14 +7,36 @@ from app import game_class as game
 
 
 def update_score(player):
-    points = 0
-    for index in player['Hand']:
-        if index['Rank'] == 'Ace' and len(player['Hand']) > 2:
-            index['Value'] = 1
 
-        points += index['Value']
-    player['Score'] = points
-    print(f"\n{player['Name']}'s Score: {player['Score']}\n")
+    if player['Name'] == 'Dealer':
+        points = 0
+        for index in player['Hand']:
+            points += index['Value']
+
+        player['Score'] = points
+
+        while player['Score'] < 17:
+            points = 0
+            card = game.new_game.deck.deck.pop()
+            player['Hand'].append(card)
+            print(
+                f"\nDealer draws a {player['Hand'][-1]['Rank']} of {player['Hand'][-1]['Suit']}")
+            for index in player['Hand']:
+                points += index['Value']
+
+            player['Score'] = points
+
+        print(f"\nDealer's Score: {player['Score']}\n")
+
+    elif player['Name'] != 'Dealer':
+        points = 0
+        for index in player['Hand']:
+            if index['Rank'] == 'Ace' and len(player['Hand']) > 2:
+                index['Value'] = 1
+
+            points += index['Value']
+        player['Score'] = points
+        print(f"\n{player['Name']}'s Score: {player['Score']}\n")
 
 
 # Update score for split hands

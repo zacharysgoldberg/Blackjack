@@ -69,7 +69,7 @@ class Game:
         if self.user['Chips'] >= 5:
             self.user['Chips'] -= 5
             self.deck.pot += 10
-            print(f"\nThe pot is at {self.deck.pot} chips")
+            print(f"\nCurrent pot: {self.deck.pot} chips")
 
     def deck_list(self):
         for i, el in enumerate(self.deck.deck):

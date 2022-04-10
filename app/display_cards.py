@@ -8,11 +8,11 @@ from app import game_class as game
 
 
 def hide_one(player):
-    if player != game.new_game.dealer:
+    if player['Name'] != 'Dealer':
         for i in player['Hand']:
             print('{} has {x} {y} of {z}'.format(player['Name'],
                                                  x='an' if i['Rank'] == '8' or i['Rank'] == 'Ace' else 'a', y=i['Rank'], z=i['Suit']))
-        score.update_score(game.new_game.user)
+        # score.update_score(player)
 
     else:
         print("Dealer has {x} {y} of {z} \nDealer's second card is face-down".format(

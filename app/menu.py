@@ -5,7 +5,7 @@ from .src.models import User, Leaderboard, db
 from sqlalchemy import insert
 import sqlalchemy
 import random
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 
 
 ############ Menu ###########
@@ -38,12 +38,15 @@ def clear_console():
 
 
 def new_register(full_name, username, email, password):
+    # getting length of db records
     rows = db.session.query(User).count()
+    # assigning new user id using length of number of records
     new_user = User(full_name=full_name, username=username, email=email,
                     password=generate_password_hash(password, method='sha256'), leaderboard_id=rows + 1)
 
     db.session.add(new_user)
     db.session.commit()
+    clear_console()
 
 
 # Adding user null results to postgres leaderboard for tallyings
@@ -53,3 +56,4 @@ def add_user_to_leaderboard(username, wins, losses, last_game):
 
     db.session.add(score)
     db.session.commit()
+    clear_console()

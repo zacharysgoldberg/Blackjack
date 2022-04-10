@@ -2,9 +2,11 @@ import csv
 import hashlib
 import os.path
 from app.src.models import User, db
+from app.menu import clear_console
 from .wsgi import create_app
 from flask_login import LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
+import time
 
 
 class Main():
@@ -25,31 +27,37 @@ class Main():
         print('\nLOGIN')
 
         while True:
-            username_validate = input(
+            user_validate = input(
                 'Enter username: ')
-            password_validate = input('Enter Password: ').strip()
             try:
+                # Check if username exists
                 exists = db.session.query(User.username).filter(
-                    User.username == username_validate).first() is not None
-                password = db.session.query(User.password).filter(
-                    User.username == username_validate)
+                    User.username == user_validate).first()[0]
+                clear_console()
 
-                # # Getting the key back from storage as bytes
-                # key_validate = hashlib.pbkdf2_hmac(
-                #     'sha256', password_validate.encode(
-                #         'utf-8'), salt.encode('utf-8'), 100000)
+                # if username exists, prompt user for password
+                if exists is not None:
+                    password_validate = input('Enter Password: ').strip()
+                    password = db.session.query(User.password).filter(
+                        User.username == user_validate).first()[0]
 
+                    clear_console()
+
+                    # Checking user input against password in db
+                    if check_password_hash(password, password_validate) is True:
+                        db.session.commit()
+                        clear_console()
+                        print('\nLogin Successfull')
+                        time.sleep(2)
+                        return user_validate
+
+                    elif check_password_hash(password_validate, password) is False:
+                        clear_console()
+                        print('Incorrect password')
+                        return False
             except:
+                clear_console()
                 print('Username does not exist')
-                return False
-            # Checking user hashed and salted password input against hased and salted password in db
-            if exists is not None or check_password_hash(password, password_validate) is True:
-                print('\nLogin Successfull')
-                db.session.commit()
-                return username_validate
-
-            else:
-                print('Incorrect password')
                 return False
 
 

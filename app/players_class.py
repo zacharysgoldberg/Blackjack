@@ -52,6 +52,7 @@ class Players:
 
             # Confirmusername does not exist
             exists = login.confirm_registration(self.user_login['username'])
+            menu.clear_console()
 
             full_name = self.user_login['full_name'].replace(" ", "")
 
@@ -67,18 +68,6 @@ class Players:
                         print('Invalid Email')
 
                     password = input('Enter Password: ').strip()
-
-                    """ Custom Password hashing and salt"""
-                    # key = hashlib.pbkdf2_hmac(
-                    #     'sha256',  # The hash digest algorithm for HMAC
-                    #     # Convert the password to bytes
-                    #     password.encode('utf-8'),
-                    #     self.user_login['salt'].encode('utf-8'),
-                    #     100000  # It is recommended to use at least 100,000 iterations of SHA-256
-                    # )
-                    # # Add random salt to user password
-                    # self.user_login['password'] = str(
-                    #     key) + self.user_login['salt']
 
                     # Ensure password is at least 8 characters long
                     if len(password) >= 8:

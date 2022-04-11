@@ -20,7 +20,7 @@ def reset_hand(player):
         for i, el in enumerate(player['Hand']):
             game.new_game.deck.deck.insert(
                 random.randint(0, len(game.new_game.deck.deck)), el)
-    if 'Score 1' in game.new_game.user:
+    if 'Score' not in game.new_game.user:
         for i, el in game.new_game.user['Hand'][0].items():
             for index, j in enumerate(el):
                 game.new_game.deck.deck.insert(

@@ -3,7 +3,7 @@ from app import menu
 from app import splitting
 from app import deck_class as deck
 from app import display_cards as disp
-from app.login_auth import main
+from app.login_auth import auth
 from app.players_class import players
 
 ############### Game setup #################
@@ -25,7 +25,7 @@ class Game:
         while True:
             choice = menu.menu()
             if choice == '1' or choice == 'login':
-                username = main.login()
+                username = auth.login()
                 # Update user and dealer dict with game info
                 self.user.update({'Name': username,
                                   'Chips': 100, 'Hand': [], 'Score': 0})
@@ -49,7 +49,7 @@ class Game:
     # Deal 2 cards to both dealer and user
 
     def deal(self, player):
-        print('Dealing cards...\n')
+        print('\nDealing cards...')
     # intentional delay...
         time.sleep(1)
         for i in range(2):

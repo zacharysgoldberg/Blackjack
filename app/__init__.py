@@ -31,4 +31,8 @@ def create_app(test_config=None):
     db.init_app(app)
     migrate = Migrate(app, db)
 
+    # from .src.api import users, leaderboard
+    # app.register_blueprint(users.bp)
+    # app.register_blueprint(leaderboard.bp)
+
     return app

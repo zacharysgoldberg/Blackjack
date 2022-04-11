@@ -1,6 +1,6 @@
 import secrets
 import hashlib
-from app.login_auth import main as login
+from app.login_auth import auth as login
 from app import menu
 import re
 import random
@@ -16,8 +16,8 @@ from app.src.models import Leaderboard, db, User
 class Players:
 
     def __init__(self):
-        self.app = create_app()
-        self.app.app_context().push()
+        # self.app = create_app()
+        # self.app.app_context().push()
         self.user_login = {'salt': secrets.token_hex(16),
                            'full_name': None,
                            'username': None,
@@ -72,8 +72,6 @@ class Players:
                     # Ensure password is at least 8 characters long
                     if len(password) >= 8:
                         self.user_login['password'] = password
-                        print(
-                            f"\n{self.user_login['username']} has been registered")
                         self.success = True
                         break
 

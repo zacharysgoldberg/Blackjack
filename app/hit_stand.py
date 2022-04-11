@@ -1,6 +1,7 @@
 from app.score import update_score, split_score
 from app.game_class import new_game as game
 from app import display_cards as disp
+import time
 
 # Hit - if player's hand doesn't bust ask if they wish to be dealt another card
 # Stand - take no more cards and show the dealers hand (face-down card)
@@ -35,6 +36,7 @@ def hit_stand():
             else:
                 update_score(game.user)
                 disp.face_up(game.dealer)
+                time.sleep(2)
             break
 
         else:

@@ -9,12 +9,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import time
 
 
-class Main():
+class Auth():
     def __init__(self):
         self.app = create_app()
         self.app.app_context().push()
 
     # Confirm user doest not exist in db
+
     def confirm_registration(self, username):
         # for postgres db
         exists = db.session.query(User.username).filter(
@@ -61,4 +62,4 @@ class Main():
                 return False
 
 
-main = Main()
+auth = Auth()

@@ -19,11 +19,13 @@ class Game:
         self.deck = deck.Deck()
         self.deck.new_deck()
         # Exit toggle
+        self.exit = False
         self.logout = False
+        self.play = False
         self.activity()
 
     def activity(self):
-        while self.logout == False:
+        while self.play == False:
             menu_choice = menu.main_menu()
 
             if menu_choice == '1':
@@ -37,28 +39,33 @@ class Game:
                     continue
 
                 else:
+                    self.logout = False
                     while self.logout == False:
                         choice = menu.loggedin_menu()
                         if choice == '1':
+                            self.play = True
                             break
 
-                        elif choice == '2':
+                        if choice == '2':
                             manage.update.patch(self.user['Name'])
-                            menu.clear_console()
                             continue
 
                         elif choice == '3':
                             menu.clear_console()
-                            self.logout = True
                             self.user.clear()
-                            return self.logout
-                    break
+                            self.dealer.clear()
+                            self.logout = True
+                            break
 
-            elif menu_choice == '2':
+                        else:
+                            print('Invalid Option')
+                            continue
+
+            if menu_choice == '2':
                 # Register new user
                 players.register()
 
-            elif menu_choice == '3':
+            if menu_choice == '3':
                 # Leave menu
                 self.exit = True
                 return

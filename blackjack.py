@@ -11,7 +11,7 @@ from app.leaderboard_class import update
 def main():
     while True:
         menu.clear_console()
-        if new_game.logout == True:
+        if new_game.exit == True:
             print('Goodbye')
             break
         if new_game.user['Chips'] < 5:
@@ -80,7 +80,7 @@ def main():
             break
         else:
             print('Invalid Option')
-    if new_game.logout == False:
+    if new_game.exit == False:
         update.insert(new_game.user['Name'])
 
 

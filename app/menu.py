@@ -25,7 +25,7 @@ def main_menu():
 
 def loggedin_menu():
     print("")
-    print("          === Blackjack Menu ===          ")
+    print("          === Account Menu ===          ")
     print("------------------------------------------")
     print("|     1. Play      | 2.  Manage Account   |")
     print("------------------------------------------")

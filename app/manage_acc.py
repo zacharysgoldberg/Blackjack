@@ -37,16 +37,16 @@ class UpdateAccount():
         print('| 3.  Change Name   |  4. Return to Menu  |')
         print('------------------------------------------')
 
-        choice = input('Select an option: ')
-
         while True:
+            choice = input('Select an option: ')
 
             if choice == '1':
                 new_email = input('Enter new email: ')
-                self.check_mail(new_email)
+                self.check_email(new_email)
                 user.email = new_email
 
                 db.session.commit()
+                clear_console()
                 print(
                     f"\nYour email ({new_email}) has been successfully updated.")
                 break
@@ -59,6 +59,7 @@ class UpdateAccount():
                         new_password, method='sha256')
 
                     db.session.commit()
+                    clear_console()
                     print(
                         f"\nYour password has been successfully updated.")
                     break
@@ -69,6 +70,7 @@ class UpdateAccount():
                 user.full_name = name
 
                 db.session.commit()
+                clear_console()
                 print(
                     f"\nYour name ({name}) has been successfully updated.")
                 break
@@ -76,7 +78,12 @@ class UpdateAccount():
             elif choice == '4':
                 print('Returning to main menu..')
                 time.sleep(2)
+                clear_console()
                 break
+
+            else:
+                print('Invalid Option')
+                continue
 
 
 update = UpdateAccount()

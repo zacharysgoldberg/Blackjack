@@ -11,17 +11,27 @@ from werkzeug.security import generate_password_hash
 ############ Menu ###########
 
 
-def menu():
+def main_menu():
     print("")
     print("          === Blackjack Menu ===          ")
     print("------------------------------------------")
-    print("| 1.    Login     | 2.    Register        |")
+    print("|      1.  Login        | 2.  Register    |")
     print("------------------------------------------")
-    print('|              3. Exit                    |')
+    print('|               3.  Exit                  |')
     print('------------------------------------------')
     return input(
-        '\nSelect option\n').lower().strip()
+        '\nSelect option\n').strip()
 
+
+def loggedin_menu():
+    print("")
+    print("          === Blackjack Menu ===          ")
+    print("------------------------------------------")
+    print("|     1. Play      | 2.  Manage Account   |")
+    print("------------------------------------------")
+    print('|              3.  Logout                 |')
+    print('------------------------------------------')
+    return input('\nSelect option\n').strip()
 
 # clear command line UI
 
@@ -40,7 +50,7 @@ def clear_console():
 def new_register(full_name, username, email, password):
     leaderboard_id = db.session.query(Leaderboard.id).filter(
         Leaderboard.username == username).first()[0]
-    print("LEADERBOARD ID!!! :", leaderboard_id)
+
     # assigning new user id using length of number of records
     new_user = User(full_name=full_name, username=username, email=email,
                     password=generate_password_hash(password, method='sha256'), leaderboard_id=leaderboard_id)

@@ -11,7 +11,7 @@ from app.leaderboard_class import update
 def main():
     while True:
         menu.clear_console()
-        if new_game.exit == True:
+        if new_game.logout == True:
             print('Goodbye')
             break
         if new_game.user['Chips'] < 5:
@@ -34,12 +34,10 @@ def main():
                 break
 
             # If player score > 21 / if split, at least one hand is > 21; bust
-            elif ('Score' in new_game.user and new_game.user['Score'] > 21) or \
-                    ('Score' not in new_game.user and (new_game.user['Score 1'] > 21 or new_game.user['Score 2'] > 21)) or\
-                    ('Score' not in new_game.user and (
-                        new_game.user['Score 1'] > 21 and new_game.user['Score 2'] == 21)) or\
-            ('Score' not in new_game.user and (new_game.user['Score 1'] == 21 and new_game.user['Score 2'] > 21)):
+            elif ('Score' in new_game.user and new_game.user['Score'] > 21) or ('Score' not in new_game.user and (new_game.user['Score 1'] > 21 or new_game.user['Score 2'] > 21)):
                 print('Bust!')
+                print('Users cards:', new_game.user['Hand'])
+                print('USers score:', new_game.user['Score'])
                 win_lose.lose()
                 win_lose.total_losses += 1
                 break
@@ -82,8 +80,8 @@ def main():
             break
         else:
             print('Invalid Option')
-
-    update.insert(new_game.user['Name'])
+    if new_game.logout == False:
+        update.insert(new_game.user['Name'])
 
 
 main()

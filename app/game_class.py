@@ -3,6 +3,7 @@ from app import menu
 from app import splitting
 from app import deck_class as deck
 from app import display_cards as disp
+from app import manage_acc as manage
 from app.login_auth import auth
 from app.players_class import players
 
@@ -18,13 +19,14 @@ class Game:
         self.deck = deck.Deck()
         self.deck.new_deck()
         # Exit toggle
-        self.exit = False
+        self.logout = False
         self.activity()
 
     def activity(self):
-        while True:
-            choice = menu.menu()
-            if choice == '1' or choice == 'login':
+        while self.logout == False:
+            menu_choice = menu.main_menu()
+
+            if menu_choice == '1':
                 username = auth.login()
                 # Update user and dealer dict with game info
                 self.user.update({'Name': username,
@@ -33,18 +35,35 @@ class Game:
                                     'Score': 0})
                 if username == False:
                     continue
+
                 else:
+                    while self.logout == False:
+                        choice = menu.loggedin_menu()
+                        if choice == '1':
+                            break
+
+                        elif choice == '2':
+                            manage.update.patch(self.user['Name'])
+                            menu.clear_console()
+                            continue
+
+                        elif choice == '3':
+                            menu.clear_console()
+                            self.logout = True
+                            self.user.clear()
+                            return self.logout
                     break
-            elif choice == '2' or choice == 'register':
+
+            elif menu_choice == '2':
                 # Register new user
                 players.register()
 
-            elif choice == '3' or choice == 'exit':
+            elif menu_choice == '3':
                 # Leave menu
                 self.exit = True
                 return
             else:
-                print('Invalid Choice')
+                print('Invalid Option')
 
     # Deal 2 cards to both dealer and user
 

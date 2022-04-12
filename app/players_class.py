@@ -66,6 +66,7 @@ class Players:
                         self.user_login['email'] = email
                     else:
                         print('Invalid Email')
+                        continue
 
                     password = input('Enter Password: ').strip()
 
@@ -77,6 +78,8 @@ class Players:
 
                     else:
                         print('Password must contain 8 characters')
+                        continue
+
                 break
 
             elif len(self.user_login['username']) < 2:

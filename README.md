@@ -6,3 +6,7 @@ Requires user to register account and login with valid credentials before playin
 ## Future improvements
 
 To include a python GUI, deploy to AWS/Azure
+
+### How to play
+
+Install requirements, deploy docker containers, and run blackjack.py

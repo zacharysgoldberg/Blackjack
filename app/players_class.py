@@ -16,8 +16,8 @@ from app.src.models import Leaderboard, db, User
 class Players:
 
     def __init__(self):
-        # self.app = create_app()
-        # self.app.app_context().push()
+        self.app = create_app()
+        self.app.app_context().push()
         self.user_login = {'salt': secrets.token_hex(16),
                            'full_name': None,
                            'username': None,
@@ -57,15 +57,19 @@ class Players:
             full_name = self.user_login['full_name'].replace(" ", "")
 
             # Ensure username is at least 2 characters long and contains alphanumeric letters
-            if exists is not None and len(self.user_login['username']) > 2 and full_name.isalpha():
+            if exists is None and len(self.user_login['full_name']) > 2 and full_name.isalpha():
 
                 while True:
                     email = input('Enter email: ')
                     valid_email = self.check_email(email)
-                    if valid_email == True:
+                    exists = db.session.query(User.id).filter(
+                        User.email == email).first()
+                    menu.clear_console()
+
+                    if valid_email == True and exists is None:
                         self.user_login['email'] = email
                     else:
-                        print('Invalid Email')
+                        print('Invalid Email or Email is already in use')
                         continue
 
                     password = input('Enter Password: ').strip()

@@ -18,8 +18,8 @@ class Auth():
 
     def confirm_registration(self, username):
         # for postgres db
-        exists = db.session.query(User.username).filter(
-            User.username == username).first() is not None
+        exists = db.session.query(User.id).filter(
+            User.username == username).first()
         return exists
 
     # Login method

@@ -1,4 +1,4 @@
-from app import game_class as game
+from app.src import game_class as game
 
 ############### Betting #################
 

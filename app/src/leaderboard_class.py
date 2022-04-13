@@ -1,8 +1,8 @@
 from app.src.models import User, Leaderboard, db
-from .wsgi import create_app
-from app import game_class as game
-from app import win_lose
-from app.menu import clear_console
+from ..wsgi import create_app
+from app.src import game_class as game
+from app.src import win_lose
+from app.src.menu import clear_console
 
 # update scores in leaderboard
 

@@ -1,11 +1,11 @@
 import time
-from app import menu
-from app import splitting
-from app import deck_class as deck
-from app import display_cards as disp
-from app import manage_acc as manage
-from app.login_auth import auth
-from app.players_class import players
+from app.src import menu
+from app.src import splitting
+from app.src import deck_class as deck
+from app.src import display_cards as disp
+from app.src import manage_acc as manage
+from app.src.login_auth import auth
+from app.src.players_class import players
 
 ############### Game setup #################
 
@@ -40,18 +40,22 @@ class Game:
 
                 else:
                     self.logout = False
+                    # display logged in menu
                     while self.logout == False:
                         choice = menu.loggedin_menu()
                         if choice == '1':
+                            # player chooses play
                             self.play = True
                             break
 
                         if choice == '2':
+                            # player chooses to update account info
                             manage.update.patch(self.user['Name'])
                             continue
 
                         elif choice == '3':
                             menu.clear_console()
+                            # player chooses to logout
                             self.user.clear()
                             self.dealer.clear()
                             self.logout = True

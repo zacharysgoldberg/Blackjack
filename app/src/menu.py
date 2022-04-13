@@ -1,7 +1,7 @@
 import os
 import csv
 from csv import writer
-from .src.models import User, Leaderboard, db
+from .models import User, Leaderboard, db
 from sqlalchemy import insert
 import sqlalchemy
 import random

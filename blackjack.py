@@ -1,9 +1,9 @@
-from app import betting
-from app import hit_stand
-from app import win_lose
-from app import menu
-from app.game_class import new_game
-from app.leaderboard_class import update
+from app.src import betting
+from app.src import hit_stand
+from app.src import win_lose
+from app.src import menu
+from app.src.game_class import new_game
+from app.src.leaderboard_class import update
 
 ################# Game logic #################
 
@@ -80,6 +80,8 @@ def main():
             break
         else:
             print('Invalid Option')
+
+    # Upon exitting game, update leaderboard scores
     if new_game.exit == False:
         update.insert(new_game.user['Name'])
 

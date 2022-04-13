@@ -6,14 +6,13 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      # POSTGRES_PASSWORD: admin123
       POSTGRES_DB: blackjack
       POSTGRES_HOST_AUTH_METHOD: trust
       PGUSER: postgres
     ports:
       - "5432:5432"
     volumes:
-      - "${PWD}/data/blackjack:/docker-entrypoint-initdb.d/"
+      - "${PWD}/postgres/data:/docker-entrypoint-initdb.d/"
 
   pgadmin:
     container_name: pgadmin_container

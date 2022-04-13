@@ -1,10 +1,10 @@
 import secrets
 import hashlib
-from app.login_auth import auth as login
-from app import menu
+from app.src.login_auth import auth as login
+from app.src import menu
 import re
 import random
-from .wsgi import create_app
+from ..wsgi import create_app
 from app.src.models import Leaderboard, db, User
 
 
@@ -43,6 +43,7 @@ class Players:
             name = self.user_login['full_name'].lower(
             ).title().strip().split(" ")
 
+            # Generate username from full name
             first_name = name[0]
             first_letter_last = name[-1][0].capitalize()
             number = '{:01d}'.format(random.randrange(1, 999))
@@ -50,17 +51,18 @@ class Players:
                 first_name, first_letter_last, number)
             self.user_login['username'] = username
 
-            # Confirmusername does not exist
+            # Confirm username does not exist
             exists = login.confirm_registration(self.user_login['username'])
             menu.clear_console()
 
             full_name = self.user_login['full_name'].replace(" ", "")
 
-            # Ensure username is at least 2 characters long and contains alphanumeric letters
+            # Ensure full name is at least 2 characters long and contains only letters
             if exists is None and len(self.user_login['full_name']) > 2 and full_name.isalpha():
 
                 while True:
                     email = input('Enter email: ')
+                    # validate email and that it is not already in use
                     valid_email = self.check_email(email)
                     exists = db.session.query(User.id).filter(
                         User.email == email).first()

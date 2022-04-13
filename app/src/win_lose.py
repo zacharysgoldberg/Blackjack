@@ -1,5 +1,5 @@
-from app import game_class as game
-from app import reset
+from app.src import game_class as game
+from app.src import reset
 
 ################ Determine Winner ###############
 

@@ -1,6 +1,6 @@
 import time
-from app import score
-from app import game_class as game
+from app.src import score
+from app.src import game_class as game
 
 ############## Displaying Cards ##################
 

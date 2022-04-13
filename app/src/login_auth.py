@@ -2,8 +2,8 @@ import csv
 import hashlib
 import os.path
 from app.src.models import User, db
-from app.menu import clear_console
-from .wsgi import create_app
+from app.src.menu import clear_console
+from ..wsgi import create_app
 from flask_login import LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 import time

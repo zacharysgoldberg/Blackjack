@@ -1,3 +1,5 @@
 venv
-data
+instance
 images
+**__pycache__/
+*.vscode

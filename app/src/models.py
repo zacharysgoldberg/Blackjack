@@ -26,17 +26,9 @@ class User(db.Model):
         self.email = email
         self.leaderboard_id = leaderboard_id
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'full_name': self.full_name,
-            'username': self.username,
-            'email': self.email,
-            'leaderboard_id': self.leaderboard_id
-        }
-
-
 # leaderboard table
+
+
 class Leaderboard(db.Model):
     __tablename__ = 'leaderboard'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -55,12 +47,3 @@ class Leaderboard(db.Model):
         self.wins = wins
         self.losses = losses
         self.last_game = last_game
-
-    def serialize(self):
-        return {
-            'id': self.id,
-            'username': self.username,
-            'wins': self.wins,
-            'losses': self.losses,
-            'last_game': self.last_game.isoformat(),
-        }

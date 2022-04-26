@@ -12,7 +12,7 @@ def hide_one(player):
         for i in player['Hand']:
             print('{} has {x} {y} of {z}'.format(player['Name'],
                                                  x='an' if i['Rank'] == '8' or i['Rank'] == 'Ace' else 'a', y=i['Rank'], z=i['Suit']))
-        # score.update_score(player)
+        score.update_score(player)
 
     else:
         print("Dealer has {x} {y} of {z} \nDealer's second card is face-down".format(

@@ -37,7 +37,7 @@ def main():
             elif ('Score' in new_game.user and new_game.user['Score'] > 21) or ('Score' not in new_game.user and (new_game.user['Score 1'] > 21 or new_game.user['Score 2'] > 21)):
                 print('Bust!')
                 print('Users cards:', new_game.user['Hand'])
-                print('USers score:', new_game.user['Score'])
+                print('Users score:', new_game.user['Score'])
                 win_lose.lose()
                 win_lose.total_losses += 1
                 break
@@ -73,10 +73,10 @@ def main():
                     print('Invalid Option')
         # Ask player to play again or quit
         again = input(
-            '\nPlay again?\n1) Yes\n2) No\n').lower().capitalize().strip()
-        if again == '1' or again == 'Yes':
+            '\nPlay again?\n1) Yes\n2) No\n').strip()
+        if again == '1':
             continue
-        elif again == '2' or again == 'No':
+        elif again == '2':
             break
         else:
             print('Invalid Option')

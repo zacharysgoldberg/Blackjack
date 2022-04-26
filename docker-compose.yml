@@ -1,30 +1,24 @@
 version: "3.8"
 services:
-  pg:
-    container_name: pg_container
-    image: postgres:14.1-alpine3.15
+  # web:
+  #   build: ./app
+  #   command: gunicorn --bind 0.0.0.0:8000 -w 2 wsgi.app
+  #   restart: always
+  #   volumes:
+  #     - ${PWD}:usr/src/app/
+  #   ports:
+  #     - "80:8000"
+  #   depends_on:
+  #     - db
+
+  db:
+    image: postgres:latest
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: blackjack
-      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: blackjack_db
       PGUSER: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
     volumes:
-      - "${PWD}/postgres/data:/docker-entrypoint-initdb.d/"
-
-  pgadmin:
-    container_name: pgadmin_container
-    image: dpage/pgadmin4:5.2
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin123
-      PGADMIN_LISTEN_PORT: 5433
-      PGADMIN_CONFIG_SERVER_MODE: "False"
-      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
-    ports:
-      - "5433:5433"
-    depends_on:
-      - pg
+      - ${PWD}:/var/lib/data

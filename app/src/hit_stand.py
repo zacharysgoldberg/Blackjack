@@ -10,8 +10,8 @@ import time
 def hit_stand():
     while True:
         select = input(
-            'Do you wish to Hit, or Stand?\n1) Hit\n2) Stand\n').lower().capitalize().strip()
-        if select == '1' or select == 'Hit':
+            'Do you wish to Hit, or Stand?\n1) Hit\n2) Stand\n').strip()
+        if select == '1':
             # Hit for split hands
             if len(game.user['Hand'][0].items()) == 2:
                 for index, el in game.user['Hand'][0].items():
@@ -27,7 +27,7 @@ def hit_stand():
                 update_score(game.user)
             break
 
-        elif select == '2' or select == 'Stand':
+        elif select == '2':
             # Stand for split hands
             if len(game.user['Hand'][0].items()) == 2:
                 split_score()

@@ -23,7 +23,7 @@ def main_menu():
         '\nSelect option\n').strip()
 
 
-def loggedin_menu():
+def logged_in_menu():
     print("")
     print("          === Account Menu ===          ")
     print("------------------------------------------")

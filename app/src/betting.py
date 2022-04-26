@@ -7,8 +7,8 @@ def bet():
     while True:
         if game.new_game.user['Chips'] >= 5:
             option = input(
-                '\nDo you wish to raise?\n1) Yes\n2) No\n').lower().capitalize().strip()
-            if option == '1' or option == 'Yes':
+                '\nDo you wish to raise?\n1) Yes\n2) No\n').strip()
+            if option == '1':
                 # handling edge cases
                 try:
                     user_bet = int(input('Enter amount to bet: '))
@@ -24,5 +24,7 @@ def bet():
                         continue
                 except ValueError:
                     print('Only whole numbers are permitted')
-            elif option == '2' or option == 'No':
+            elif option == '2':
                 break
+        else:
+            break

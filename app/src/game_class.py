@@ -42,7 +42,7 @@ class Game:
                     self.logout = False
                     # display logged in menu
                     while self.logout == False:
-                        choice = menu.loggedin_menu()
+                        choice = menu.logged_in_menu()
                         if choice == '1':
                             # player chooses play
                             self.play = True

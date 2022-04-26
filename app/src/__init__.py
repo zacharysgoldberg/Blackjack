@@ -2,14 +2,12 @@ import os
 from flask import Flask
 from flask_migrate import Migrate
 
-# https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
-
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        SQLALCHEMY_DATABASE_URI='postgresql://postgres@localhost:5432/blackjack',
+        SQLALCHEMY_DATABASE_URI='postgresql://postgres@localhost:5432/blackjack_db',
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
         SQLALCHEMY_ECHO=True
     )
@@ -31,7 +29,7 @@ def create_app(test_config=None):
     db.init_app(app)
     migrate = Migrate(app, db)
 
-    # from .src.api import users, leaderboard
+    # from .api import users, leaderboard
     # app.register_blueprint(users.bp)
     # app.register_blueprint(leaderboard.bp)
 

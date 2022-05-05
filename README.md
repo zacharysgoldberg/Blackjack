@@ -9,4 +9,4 @@ To include a python GUI that communicates with db/api, and deployed on AWS/Azure
 
 ### How to test
 
-Install requirements, deploy docker containers, and run blackjack.py in root dir.
+Install requirements, deploy docker containers <docker compose up -d>, and run blackjack.py in root dir.

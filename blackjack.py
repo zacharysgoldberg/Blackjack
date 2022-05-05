@@ -34,7 +34,8 @@ def main():
                 break
 
             # If player score > 21 / if split, at least one hand is > 21; bust
-            elif ('Score' in new_game.user and new_game.user['Score'] > 21) or ('Score' not in new_game.user and (new_game.user['Score 1'] > 21 or new_game.user['Score 2'] > 21)):
+            elif ('Score' in new_game.user and new_game.user['Score'] > 21) or \
+                    ('Score' not in new_game.user and (new_game.user['Score 1'] > 21 or new_game.user['Score 2'] > 21)):
                 print('Bust!')
                 print('Users cards:', new_game.user['Hand'])
                 print('Users score:', new_game.user['Score'])
@@ -54,7 +55,8 @@ def main():
 
                 # If player hits, and player score is > 21 / if split, at least one hand is > 21; bust
                 elif (((option == '2' or option == 'Stand') and ('Score' in new_game.user and
-                                                                 new_game.dealer['Score'] > new_game.user['Score'] and new_game.dealer['Score'] <= 21) or
+                                                                 new_game.dealer['Score'] > new_game.user['Score'] and
+                                                                 new_game.dealer['Score'] <= 21) or
                         ('Score' not in new_game.user and new_game.dealer['Score'] > new_game.user['Score 1'] and
                          new_game.dealer['Score'] > new_game.user['Score 2'] and new_game.dealer['Score'] <= 21))):
                     win_lose.lose()
@@ -62,7 +64,8 @@ def main():
                     break
 
                 # If player stands, and player score is <= 21 / if split, at least one hand is <= 21, And dealer hand is less than player hand(s); win
-                elif ((option == '2' or option == 'Stand') and ('Score' in new_game.user and new_game.dealer['Score'] <= new_game.user['Score']) or
+                elif ((option == '2' or option == 'Stand') and ('Score' in new_game.user and
+                                                                new_game.dealer['Score'] <= new_game.user['Score']) or
                       ('Score' in new_game.user and new_game.dealer['Score'] > 21) or ('Score' not in new_game.user and (
                         new_game.dealer['Score'] <= new_game.user['Score 1'] or new_game.dealer['Score'] <= new_game.user['Score 2']))):
                     win_lose.win()

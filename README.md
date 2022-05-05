@@ -2,11 +2,11 @@
 
 [GUI still in development]
 Includes Flask libraries.
-Requires user to register account and login with valid credentials before playing. User account and leaderboard data is stored in a PostgreSQL database.
+Requires user to register account and login with valid credentials before playing. User account and leaderboard data is stored in a sqlite database (Development stage).
 
 ## Future improvements
 
-To include a python GUI that communicates with db/api, and deployed on AWS/Azure
+To include a python GUI that communicates with db/api, utilize Postgres database, and deploy on Azure
 
 ### How to test
 

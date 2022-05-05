@@ -3,3 +3,4 @@ instance
 images
 **__pycache__/
 *.vscode
+docker-compose.yml

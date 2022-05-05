@@ -5,7 +5,7 @@ from app.src import menu
 import re
 import random
 from ..wsgi import create_app
-from app.src.models import Leaderboard, db, User
+from app.src.api.models.models import Leaderboard, db, User
 
 
 ################## Creating Players ##################

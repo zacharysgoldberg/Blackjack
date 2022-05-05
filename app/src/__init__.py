@@ -25,7 +25,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from .models import db
+    from .api.models.models import db
     db.init_app(app)
     migrate = Migrate(app, db)
 

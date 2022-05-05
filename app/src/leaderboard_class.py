@@ -1,4 +1,4 @@
-from app.src.models import User, Leaderboard, db
+from app.src.api.models.models import User, Leaderboard, db
 from ..wsgi import create_app
 from app.src import game_class as game
 from app.src import win_lose

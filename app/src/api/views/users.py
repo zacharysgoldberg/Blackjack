@@ -1,6 +1,6 @@
 # add handlers for user input and import variables from player_class/game_class
 from flask import Blueprint, jsonify, abort, request
-from ..models import Leaderboard, User, db
+from ..models.models import Leaderboard, User, db
 import hashlib
 import sqlalchemy
 

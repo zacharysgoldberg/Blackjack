@@ -10,4 +10,4 @@ To include a python GUI that communicates with db/api, utilize Postgres database
 
 ### How to test
 
-Install requirements, deploy docker containers <docker compose up -d>, and run blackjack.py in root dir.
+Install requirements, and run blackjack.py in root dir.

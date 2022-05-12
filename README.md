@@ -8,6 +8,6 @@ Requires user to register account and login with valid credentials before playin
 
 To include a python GUI that communicates with db/api, utilize Postgres database, and deploy on Azure
 
-### How to test
+### How to run/test
 
 Install requirements, and run blackjack.py in root dir.

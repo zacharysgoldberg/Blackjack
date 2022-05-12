@@ -9,7 +9,7 @@ def bet():
             option = input(
                 '\nDo you wish to raise?\n1) Yes\n2) No\n').strip()
             if option == '1':
-                # handling edge cases
+                # [handling edge cases]
                 try:
                     user_bet = int(input('Enter amount to bet: '))
                     if user_bet <= game.new_game.user['Chips']:

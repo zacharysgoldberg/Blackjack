@@ -4,7 +4,7 @@ from . import game_class as game
 from . import win_lose
 from .menu import clear_console
 
-# update scores in leaderboard
+# [update scores in leaderboard]
 
 
 class UpdateScore():
@@ -12,12 +12,12 @@ class UpdateScore():
         self.app = create_app()
         self.app.app_context().push()
 
-    # insert new scores
+    # [insert new scores]
     def insert(self, player):
         id = db.session.query(
             Leaderboard.id).filter(Leaderboard.username == player).first()[0]
 
-        # retrieve user/leaderboard object based on id
+        # [retrieve user/leaderboard object based on id]
         leaderboard = Leaderboard.query.get(id)
 
         wins = int(leaderboard.wins) + int(win_lose.total_wins)

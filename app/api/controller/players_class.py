@@ -10,7 +10,7 @@ from app.api.models.models import Leaderboard, db, User
 
 ################## Creating Players ##################
 
-# Create dealer and player (empty hands)
+# [create dealer and player (empty hands)]
 
 
 class Players:
@@ -24,7 +24,7 @@ class Players:
                            'email': None,
                            'password': None}
 
-    # ensure email is valid
+    # [ensure email is valid]
     def check_email(self, email):
         regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
@@ -34,8 +34,8 @@ class Players:
         else:
             return False
 
-    # Prompt user to register an account
-    # Check if user already exists in CSV db, upload user info to CSV database
+    # [prompt user to register an account]
+
     def register(self):
         while True:
             self.user_login['full_name'] = input(
@@ -43,7 +43,7 @@ class Players:
             name = self.user_login['full_name'].lower(
             ).title().strip().split(" ")
 
-            # Generate username from full name
+            # [generate username from full name]
             first_name = name[0]
             first_letter_last = name[-1][0].capitalize()
             number = '{:01d}'.format(random.randrange(1, 999))
@@ -51,18 +51,18 @@ class Players:
                 first_name, first_letter_last, number)
             self.user_login['username'] = username
 
-            # Confirm username does not exist
+            # [confirm username does not exist]
             exists = login.confirm_registration(self.user_login['username'])
             menu.clear_console()
 
             full_name = self.user_login['full_name'].replace(" ", "")
 
-            # Ensure full name is at least 2 characters long and contains only letters
+            # [ensure full name is at least 2 characters long and contains only letters]
             if exists is None and len(self.user_login['full_name']) > 2 and full_name.isalpha():
 
                 while True:
                     email = input('Enter email: ')
-                    # validate email and that it is not already in use
+                    # [validate email and that it is not already in use]
                     valid_email = self.check_email(email)
                     exists = db.session.query(User.id).filter(
                         User.email == email).first()
@@ -76,7 +76,7 @@ class Players:
 
                     password = input('Enter Password: ').strip()
 
-                    # Ensure password is at least 8 characters long
+                    # [ensure password is at least 8 characters long]
                     if len(password) >= 8:
                         self.user_login['password'] = password
                         self.success = True
@@ -94,9 +94,9 @@ class Players:
             elif exists == True:
                 print("Username already exists")
 
-        # Add new user to postgres leaderboard
+        # [add new user to postgres leaderboard]
         menu.add_user_to_leaderboard(self.user_login['username'], 0, 0, None)
-        # Add new user info to db
+        # [add new user info to db]
         menu.new_register(self.user_login['full_name'], self.user_login['username'],
                           self.user_login['email'], self.user_login['password'])
 

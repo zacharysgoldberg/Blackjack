@@ -4,7 +4,7 @@ import datetime
 
 db = SQLAlchemy()
 
-# users table
+# [users table]
 
 
 class User(db.Model):
@@ -26,7 +26,7 @@ class User(db.Model):
         self.email = email
         self.leaderboard_id = leaderboard_id
 
-# leaderboard table
+# [leaderboard table]
 
 
 class Leaderboard(db.Model):

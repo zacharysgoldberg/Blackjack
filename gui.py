@@ -11,7 +11,7 @@ root.configure(background='green')
 
 global player, dealer, player_frame_1, my_frame, dealer_frame
 
-# Create frames for cards
+# [Create frames for cards]
 my_frame = Frame(root, bg='green')
 my_frame.pack(pady=20)
 
@@ -23,7 +23,7 @@ player_frame_1 = LabelFrame(my_frame, text="",
                             bd=0, bg='green', font=('Helvetica', 16))
 player_frame_1.grid(ipadx=10, pady=5)
 
-# Put cards in frame
+# [Put cards in frame]
 dealer_label_1 = Label(dealer_frame, text='')
 dealer_label_2 = Label(dealer_frame, text='')
 dealer_label_1.grid(row=0, column=0, pady=10, padx=10)
@@ -34,7 +34,7 @@ player_label_2 = Label(player_frame_1, text='')
 player_label_1.grid(row=1, column=0, pady=10, padx=10)
 player_label_2.grid(row=1, column=1, pady=10, padx=10)
 
-# Button frame
+# [Button frame]
 button_frame = Frame(root, bg='green')
 button_frame.pack(pady=10)
 
@@ -43,11 +43,11 @@ player = {'Name': 'Player', 'Score': 0, 'Hand': [], 'Chips': 100}
 dealer = {'Name': 'Dealer', 'Score': 0, 'Hand': []}
 
 
-# updating scores on lable
+# [updating scores on lable]
 
 
 def update_score(player_dealer, player_dealer_n):
-    # only showing score for face-up card if dealer
+    # [only showing score for face-up card if dealer]
     if player_dealer['Name'] == 'Dealer':
         player_dealer_n['text'] = f"{player_dealer['Name']} Score: {player_dealer['Hand'][0]['Value']}"
     else:
@@ -68,7 +68,7 @@ def split_score():
     player['Score 1'] = points1
     player['Score 2'] = points2
 
-    # update scores
+    # [update scores]
 
 
 def score(player_dealer):
@@ -89,31 +89,31 @@ def score(player_dealer):
 
 
 def resize_cards(card):
-    # open image
+    # [open image]
     card_img = Image.open(card)
-    # resize image
+    # [resize image]
     card_img_resized = card_img.resize((100, 162))
-    # output card
+    # [output card]
     global card_image
     card_image = ImageTk.PhotoImage(card_img_resized)
     return card_image
 
 
-# Storing card images to keep them displayed
+# [Storing card images to keep them displayed]
 labels = {}
 
-# Hit button counter
+# [Hit button counter]
 count = 1
 
 
 def hit():
     global label, player_image, count
     count += 1
-    # get player card
+    # [get player card]
     card = deck.pop()
     player['Hand'].append(card)
 
-    # # output card
+    # # [output card]
     label = Label(player_frame_1, text='')
     label.grid(
         row=1, column=count, padx=10)
@@ -147,7 +147,7 @@ def deck():
     ranks = ['2', '3', '4', '5', '6', '7', '8',
                   '9', '10', 'Jack', 'Queen', 'King', 'Ace']
 
-    # Create a 52 card deck
+    # [Create a 52 card deck]
     for rank in ranks:
         for suit in suits:
             value = 0
@@ -160,7 +160,7 @@ def deck():
             deck.append({'Rank': rank, 'Suit': suit,
                         'Value': value})
 
-    # Shuffle the deck
+    # [Shuffle the deck]
     random.shuffle(deck)
 
     count = 1
@@ -224,12 +224,12 @@ def yes_no(yes, no):
         player_card_3 = resize_cards(
             f"images/cards/{player['Hand'][0]['Hand 2'][0]['Rank']}_of_{player['Hand'][0]['Hand 2'][0]['Suit']}.png")
         player_label_3.config(image=player_card_3)
-        # print('Player card 3: ', player['Hand'][0]['Hand 2'][0])
+        # [print('Player card 3: ', player['Hand'][0]['Hand 2'][0])]
 
         player_card_4 = resize_cards(
             f"images/cards/{player['Hand'][0]['Hand 2'][1]['Rank']}_of_{player['Hand'][0]['Hand 2'][1]['Suit']}.png")
         player_label_4.config(image=player_card_4)
-        # print('Player card 4: ', player['Hand'][0]['Hand 2'][1])
+        # [print('Player card 4: ', player['Hand'][0]['Hand 2'][1])]
 
     elif yes['text'] == 'No':
         no.grid_forget()
@@ -267,7 +267,7 @@ def deal():
     player_label_1.config(image='')
     player_label_2.config(image='')
 
-    # Dealing cards to dealer and player hands
+    # [Dealing cards to dealer and player hands]
     for i in range(2):
         player_card = deck.pop()
         dealer_card = deck.pop()
@@ -275,7 +275,7 @@ def deal():
         dealer['Hand'].append(dealer_card)
 
     global dealer_card_1, dealer_card_2, player_card_1, player_card_2
-    # dealer_card_1 = resize_cards(f"images/cards/{dealer[0]['Card']}.png")
+    # [dealer_card_1 = resize_cards(f"images/cards/{dealer[0]['Card']}.png")]
     dealer_card_1 = resize_cards(f"images/cards/Face_down.png")
     dealer_card_2 = resize_cards(
         f"images/cards/{dealer['Hand'][0]['Rank']}_of_{dealer['Hand'][0]['Suit']}.png")
@@ -302,7 +302,7 @@ def deal():
 def bet():
     global pot
 
-    # handling edge cases
+    # [handling edge cases]
     try:
         bet = int(bet_box.get())
         answer.config(text=f'Betting ${bet}')
@@ -331,7 +331,7 @@ shuffle_button = Button(button_frame, text='Shuffle deck',
                         font=('Helvetica', 14), command=deck)
 shuffle_button.grid(row=2, column=0, pady=5, columnspan=2)
 
-# Display relevant messages to player
+# [Display relevant messages to player]
 answer = Label(root, text='', font=('Helvetica', 14), bg='green')
 answer.pack(padx=5)
 
@@ -340,7 +340,7 @@ deal_button = Button(button_frame, text='Deal',
                      font=('Helvetica', 14), command=deal)
 deal_button.grid(row=1, column=0, padx=5)
 
-# Betting
+# [Betting]
 bet_button = Button(button_frame, text='Bet',
                     font=('Helvetica', 14), command=bet)
 bet_button.grid(row=1, column=1, pady=5, padx=5, sticky='nsew')

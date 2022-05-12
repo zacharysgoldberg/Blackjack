@@ -19,13 +19,13 @@ def main():
             break
         print(f"You have {new_game.user['Chips']} chips")
         new_game.ante()
-        # Ask player for bet before hand dealt
+        # [ask player for bet before hand dealt]
         betting.bet()
         new_game.deal(new_game.user)
         new_game.deal(new_game.dealer)
     # game.new_game.deck_list()
         while True:
-            # If player score == 21 / if split, at least one hand == 21; blackjack
+            # [if player score == 21 / if split, at least one hand == 21; blackjack]
             if ('Score' in new_game.user and new_game.user['Score'] == 21) or \
                     ('Score' not in new_game.user and
                         (new_game.user['Score 1'] == 21 or
@@ -35,7 +35,7 @@ def main():
                 win_lose.total_wins += 1
                 break
 
-            # If player score > 21 / if split, at least one hand is > 21; bust
+            # [if player score > 21 / if split, at least one hand is > 21; bust]
             elif ('Score' in new_game.user and
                   new_game.user['Score'] > 21) or \
                     ('Score' not in new_game.user and
@@ -45,19 +45,19 @@ def main():
                 win_lose.total_losses += 1
                 break
 
-            # If player score is < 21 / if split, both hands must be < 21 to hit or stand
+            # [if player score is < 21 / if split, both hands must be < 21 to hit or stand]
             elif ('Score' in new_game.user and new_game.user['Score'] < 21) or \
                     ('Score' not in new_game.user and
                         (new_game.user['Score 1'] < 21 and
                          new_game.user['Score 2'] < 21)):
-                # Ask player for bet after hand dealt / after player chooses to hit
+                # [ask player for bet after hand dealt / after player chooses to hit]
                 betting.bet()
                 option = hit_stand.hit_stand()
 
                 if option == '1':
                     continue
 
-                # If player hits, and player score is > 21 / if split, at least one hand is > 21; bust
+                # [if player hits, and player score is > 21 / if split, at least one hand is > 21; bust]
                 elif ((option == '2') and
                       ('Score' in new_game.user and
                         new_game.dealer['Score'] > new_game.user['Score'] and
@@ -70,7 +70,7 @@ def main():
                     win_lose.total_losses += 1
                     break
 
-                # If player stands, and player score is <= 21 / if split, at least one hand is <= 21, And dealer hand is less than player hand(s); win
+                # [if player stands, and player score is <= 21 / if split, at least one hand is <= 21, And dealer hand is less than player hand(s); win]
                 elif ((option == '2') and
                       ('Score' in new_game.user and
                        new_game.dealer['Score'] <= new_game.user['Score']) or
@@ -85,7 +85,7 @@ def main():
 
                 else:
                     print('Invalid Option')
-        # Ask player to play again or quit
+        # [ask player to play again or quit]
         again = input(
             '\nPlay again?\n1) Yes\n2) No\n').strip()
         if again == '1':
@@ -95,7 +95,7 @@ def main():
         else:
             print('Invalid Option')
 
-    # Upon exitting game, update leaderboard scores
+    # [upon exitting game, update leaderboard scores]
     if new_game.exit == False:
         update.insert(new_game.user['Name'])
 

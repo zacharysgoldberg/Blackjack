@@ -12,13 +12,13 @@ from .players_class import players
 
 class Game:
     def __init__(self):
-        # initialize user and dealer
+        # [initialize user and dealer]
         self.user = {}
         self.dealer = {}
-        # new deck
+        # [new deck]
         self.deck = deck.Deck()
         self.deck.new_deck()
-        # Exit toggle
+        # [exit toggle]
         self.exit = False
         self.logout = False
         self.play = False
@@ -30,7 +30,7 @@ class Game:
 
             if menu_choice == '1':
                 username = auth.login()
-                # Update user and dealer dict with game info
+                # [update user and dealer dict with game info]
                 self.user.update({'Name': username,
                                   'Chips': 100, 'Hand': [], 'Score': 0})
                 self.dealer.update({'Name': 'Dealer', 'Chips': 0, 'Hand': [],
@@ -40,22 +40,22 @@ class Game:
 
                 else:
                     self.logout = False
-                    # display logged in menu
+                    # [display logged in menu]
                     while self.logout == False:
                         choice = menu.logged_in_menu()
                         if choice == '1':
-                            # player chooses play
+                            # [player chooses play]
                             self.play = True
                             break
 
                         if choice == '2':
-                            # player chooses to update account info
+                            # [player chooses to update account info]
                             manage.update.patch(self.user['Name'])
                             continue
 
                         elif choice == '3':
                             menu.clear_console()
-                            # player chooses to logout
+                            # [player chooses to logout]
                             self.user.clear()
                             self.dealer.clear()
                             self.logout = True
@@ -66,21 +66,21 @@ class Game:
                             continue
 
             if menu_choice == '2':
-                # Register new user
+                # [register new user]
                 players.register()
 
             if menu_choice == '3':
-                # Leave menu
+                # [leave menu]
                 self.exit = True
                 return
             else:
                 print('Invalid Option')
 
-    # Deal 2 cards to both dealer and user
+    # [deal 2 cards to both dealer and user]
 
     def deal(self, player):
         print('\nDealing cards...')
-    # intentional delay...
+    # i[ntentional delay...]
         time.sleep(1)
         for i in range(2):
             card = self.deck.deck.pop()
@@ -90,12 +90,12 @@ class Game:
         if player['Name'] == self.user['Name'] and self.user['Hand'][0]['Rank'] == self.user['Hand'][1]['Rank']:
             splitting.split()
 
-    # Ante up
+    # [ante up]
 
     def ante(self):
         print('\nYielding Ante...')
         time.sleep(1)
-        # Ensure the user cannot exceed their total amount of chips
+        # [ensure the user cannot exceed their total amount of chips]
         if self.user['Chips'] >= 5:
             self.user['Chips'] -= 5
             self.deck.pot += 10

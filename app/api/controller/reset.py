@@ -3,7 +3,7 @@ from . import game_class as game
 
 ################# Reset ###################
 
-# Reseting user's split score format to original
+# [reseting user's split score format to original]
 
 
 def reset_score():
@@ -12,7 +12,7 @@ def reset_score():
     del game.new_game.user['Score 2']
     game.new_game.user.update(orig_score)
 
-# Clearing player's hand and re-inserting cards into deck, randomly
+# [clearing player's hand and re-inserting cards into deck, randomly]
 
 
 def reset_hand(player):

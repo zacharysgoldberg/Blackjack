@@ -39,7 +39,7 @@ class UpdateAccount():
 
         while True:
             choice = input('Select an option: ')
-            # update email
+            # [update email]
             if choice == '1':
                 new_email = input('Enter new email: ')
                 self.check_email(new_email)
@@ -55,7 +55,7 @@ class UpdateAccount():
                 new_password = input('Enter new password: ').strip()
 
                 if len(new_password) >= 8:
-                    # update password
+                    # [update password]
                     user.password = generate_password_hash(
                         new_password, method='sha256')
 
@@ -66,7 +66,7 @@ class UpdateAccount():
                     break
 
             elif choice == '3':
-                # update name
+                # [update name]
                 name = input('Enter new name: ').lower(
                 ).title().strip()
                 user.full_name = name
@@ -78,7 +78,7 @@ class UpdateAccount():
                 break
 
             elif choice == '4':
-                # return to main menu
+                # [return to main menu]
                 print('Returning to main menu..')
                 time.sleep(2)
                 clear_console()

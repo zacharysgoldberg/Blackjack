@@ -4,7 +4,7 @@ from . import game_class as game
 
 ############## Displaying Cards ##################
 
-# Display hands to user and hiding the dealer's second card (face-down)
+# [display hands to user and hiding the dealer's second card (face-down)]
 
 
 def hide_one(player):
@@ -18,7 +18,7 @@ def hide_one(player):
         print("Dealer has {x} {y} of {z} \nDealer's second card is face-down".format(
             x='an' if player['Hand'][0]['Rank'] == '8' or player['Hand'][0]['Rank'] == 'Ace' else 'a', y=player['Hand'][0]['Rank'], z=player['Hand'][0]['Suit']))
 
-# Displaying all cards to player
+# [displaying all cards to player]
 
 
 def face_up(player):

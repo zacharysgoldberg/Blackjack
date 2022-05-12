@@ -16,7 +16,7 @@ class Deck:
         self.pot = 0
 
     def new_deck(self):
-        # Create a 52 card deck
+        # [create a 52 card deck]
         for rank in self.ranks:
             for suit in self.suits:
                 value = 0
@@ -28,5 +28,5 @@ class Deck:
                     value = int(rank)
                     self.deck.append(
                         {'Rank': rank, 'Suit': suit, 'Value': value})
-        # Shuffle the deck
+        # [shuffle the deck]
         random.shuffle(self.deck)

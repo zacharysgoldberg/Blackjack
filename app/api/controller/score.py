@@ -4,11 +4,11 @@ import time
 
 ############ Update Scores #############
 
-# Update score
+# [update score]
 
 
 def update_score(player):
-    # update player's score
+    # [update player's score]
     if player['Name'] != 'Dealer':
         points = 0
         for index in player['Hand']:
@@ -19,14 +19,14 @@ def update_score(player):
         player['Score'] = points
         print(f"\n{player['Name']}'s Score: {player['Score']}\n")
 
-    # update score for dealer
+    # [update score for dealer]
     else:
         points = 0
         for index in player['Hand']:
             points += index['Value']
 
         player['Score'] = points
-        # if dealers score is <= 16, dealer must draw additional cards until their total score is >= 17
+        # [if dealers score is <= 16, dealer must draw additional cards until their total score is >= 17]
         while player['Score'] <= 16:
             print('\nDealer is drawing a card...')
             time.sleep(2)
@@ -43,7 +43,7 @@ def update_score(player):
         print(f"\nDealer's Score: {player['Score']}\n")
 
 
-# Update score for split hands
+# [update score for split hands]
 
 
 def split_score():

@@ -11,7 +11,7 @@ class Auth():
         self.app = create_app()
         self.app.app_context().push()
 
-    # Confirm user doest not exist in db
+    # [confirm user doest not exist in db]
 
     def confirm_registration(self, username):
         # for postgres db
@@ -19,7 +19,7 @@ class Auth():
             User.username == username).first()
         return exists
 
-    # Login method
+    # [login method]
 
     def login(self):
         print('\nLOGIN')
@@ -28,12 +28,12 @@ class Auth():
             user_validate = input(
                 'Enter username: ')
             try:
-                # Check if username exists
+                # [check if username exists]
                 exists = db.session.query(User.username).filter(
                     User.username == user_validate).first()[0]
                 clear_console()
 
-                # if username exists, prompt user for password
+                # [if username exists, prompt user for password]
                 if exists is not None:
                     password_validate = input('Enter Password: ').strip()
                     password = db.session.query(User.password).filter(
@@ -41,7 +41,7 @@ class Auth():
 
                     clear_console()
 
-                    # Checking user input against password in db
+                    # [checking user input against password in db]
                     if check_password_hash(password, password_validate) is True:
                         db.session.commit()
                         clear_console()

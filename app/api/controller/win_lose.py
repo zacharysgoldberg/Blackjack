@@ -3,11 +3,11 @@ from . import reset
 
 ################ Determine Winner ###############
 
-# Win / Loss counter
+# [Win / Loss counter]
 total_wins = 0
 total_losses = 0
 
-# Assign the user 100% of the pot upon winning
+# [assign the user 100% of the pot upon winning]
 
 
 def win():

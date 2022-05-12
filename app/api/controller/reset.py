@@ -1,5 +1,5 @@
 import random
-from app.src import game_class as game
+from . import game_class as game
 
 ################# Reset ###################
 

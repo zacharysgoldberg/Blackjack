@@ -1,6 +1,6 @@
-from app.src.score import update_score, split_score
-from app.src.game_class import new_game as game
-from app.src import display_cards as disp
+from .score import update_score, split_score
+from .game_class import new_game as game
+from . import display_cards as disp
 import time
 
 # Hit - if player's hand doesn't bust ask if they wish to be dealt another card

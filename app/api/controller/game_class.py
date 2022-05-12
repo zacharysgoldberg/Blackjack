@@ -1,11 +1,11 @@
 import time
-from app.src import menu
-from app.src import splitting
-from app.src import deck_class as deck
-from app.src import display_cards as disp
-from app.src import manage_acc as manage
-from app.src.login_auth import auth
-from app.src.players_class import players
+from . import menu
+from . import splitting
+from . import deck_class as deck
+from . import display_cards as disp
+from . import manage_acc as manage
+from .login_auth import auth
+from .players_class import players
 
 ############### Game setup #################
 

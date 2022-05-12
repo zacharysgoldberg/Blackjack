@@ -1,7 +1,7 @@
-from app.src.api.models.models import User, Leaderboard, db
-from ..wsgi import create_app
-from app.src import game_class as game
-from app.src.menu import clear_console
+from app.api.models.models import User, Leaderboard, db
+from ...wsgi import create_app
+from . import game_class as game
+from . menu import clear_console
 import re
 import time
 from werkzeug.security import generate_password_hash

@@ -1,5 +1,5 @@
-from app.src import game_class as game
-from app.src.display_cards import face_up
+from . import game_class as game
+from .display_cards import face_up
 import time
 
 ############ Update Scores #############

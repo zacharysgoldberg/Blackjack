@@ -1,6 +1,6 @@
 import time
-from app.src import score
-from app.src import game_class as game
+from . import score
+from . import game_class as game
 
 # Splitting - When both starting cards are the same value, create 2 new hands from them. Each new hand gets another card so that the player has 2 starting cards for each
 

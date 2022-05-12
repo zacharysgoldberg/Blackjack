@@ -1,11 +1,11 @@
 import secrets
 import hashlib
-from app.src.login_auth import auth as login
-from app.src import menu
+from . login_auth import auth as login
+from . import menu
 import re
 import random
-from ..wsgi import create_app
-from app.src.api.models.models import Leaderboard, db, User
+from ...wsgi import create_app
+from app.api.models.models import Leaderboard, db, User
 
 
 ################## Creating Players ##################

@@ -6,7 +6,7 @@ Requires user to register account and login with valid credentials before playin
 
 ## Future improvements
 
-To include a python GUI that communicates with db/api, utilize Postgres database, and deploy on Azure
+To include a python GUI that communicates with db/api, forget password/username, utilize NoSQL database, and deploy on Azure
 
 ## How to run/test
 

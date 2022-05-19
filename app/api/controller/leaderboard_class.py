@@ -1,4 +1,4 @@
-from app.models import User, Leaderboard, session
+from app.models.models import User, Leaderboard, session
 from ... import create_db
 from . import game_class as game
 from . import win_lose

@@ -1,4 +1,4 @@
-from app.models import User, session
+from app.models.models import User, session
 from .menu import clear_console
 from ... import create_db
 from werkzeug.security import generate_password_hash, check_password_hash

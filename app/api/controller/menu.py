@@ -1,10 +1,6 @@
 import os
 import csv
-from csv import writer
-from ...models import User, Leaderboard, session
-from sqlalchemy import insert
-import sqlalchemy
-import random
+from ...models.models import User, Leaderboard, session
 from werkzeug.security import generate_password_hash
 
 

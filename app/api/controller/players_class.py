@@ -1,12 +1,10 @@
 import secrets
-import hashlib
 from . login_auth import auth as login
 from . import menu
 import re
 import random
 from ... import create_db
-from app.models import Leaderboard, session, User
-from sqlalchemy.orm import sessionmaker
+from app.models.models import Leaderboard, session, User
 
 
 ################## Creating Players ##################

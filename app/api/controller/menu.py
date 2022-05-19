@@ -1,7 +1,7 @@
 import os
 import csv
 from csv import writer
-from ..models.models import User, Leaderboard, db
+from ...models import User, Leaderboard, session
 from sqlalchemy import insert
 import sqlalchemy
 import random
@@ -48,15 +48,15 @@ def clear_console():
 
 
 def new_register(full_name, username, email, password):
-    leaderboard_id = db.session.query(Leaderboard.id).filter(
+    leaderboard_id = session.query(Leaderboard.id).filter(
         Leaderboard.username == username).first()[0]
 
     # [assigning new user id using length of number of records]
     new_user = User(full_name=full_name, username=username, email=email,
                     password=generate_password_hash(password, method='sha256'), leaderboard_id=leaderboard_id)
 
-    db.session.add(new_user)
-    db.session.commit()
+    session.add(new_user)
+    session.commit()
     clear_console()
     print(
         f"\n{username} has been registered")
@@ -67,5 +67,5 @@ def add_user_to_leaderboard(username, wins, losses, last_game):
     score = Leaderboard(username=username, wins=wins,
                         losses=losses, last_game=last_game)
 
-    db.session.add(score)
-    db.session.commit()
+    session.add(score)
+    session.commit()

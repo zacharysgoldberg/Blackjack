@@ -1,17 +1,17 @@
-from app.api.models.models import User, Leaderboard, db
-from ...wsgi import create_app
+from app.models import User, Leaderboard, session
+from ... import create_db
 from . import game_class as game
 from . menu import clear_console
 import re
 import time
 from werkzeug.security import generate_password_hash
+from sqlalchemy.orm import sessionmaker
 
 
 class UpdateAccount():
 
     def __init__(self):
-        self.app = create_app()
-        self.app.app_context().push()
+        self.db = create_db()
 
     def check_email(self, email):
         regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
@@ -23,7 +23,7 @@ class UpdateAccount():
             return False
 
     def patch(self, player):
-        id = db.session.query(
+        id = session.query(
             User.id).filter(User.username == player).first()[0]
 
         user = User.query.get(id)
@@ -45,7 +45,7 @@ class UpdateAccount():
                 self.check_email(new_email)
                 user.email = new_email
 
-                db.session.commit()
+                session.commit()
                 clear_console()
                 print(
                     f"\nYour email ({new_email}) has been successfully updated.")
@@ -59,7 +59,7 @@ class UpdateAccount():
                     user.password = generate_password_hash(
                         new_password, method='sha256')
 
-                    db.session.commit()
+                    session.commit()
                     clear_console()
                     print(
                         f"\nYour password has been successfully updated.")
@@ -71,7 +71,7 @@ class UpdateAccount():
                 ).title().strip()
                 user.full_name = name
 
-                db.session.commit()
+                session.commit()
                 clear_console()
                 print(
                     f"\nYour name ({name}) has been successfully updated.")

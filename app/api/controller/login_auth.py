@@ -1,21 +1,20 @@
-from app.api.models.models import User, db
+from app.models import User, session
 from .menu import clear_console
-from ...wsgi import create_app
-from flask_login import LoginManager
+from ... import create_db
 from werkzeug.security import generate_password_hash, check_password_hash
 import time
+from sqlalchemy.orm import sessionmaker
 
 
 class Auth():
     def __init__(self):
-        self.app = create_app()
-        self.app.app_context().push()
+        self.db = create_db()
 
     # [confirm user doest not exist in db]
 
     def confirm_registration(self, username):
         # for postgres db
-        exists = db.session.query(User.id).filter(
+        exists = session.query(User.id).filter(
             User.username == username).first()
         return exists
 
@@ -29,21 +28,21 @@ class Auth():
                 'Enter username: ')
             try:
                 # [check if username exists]
-                exists = db.session.query(User.username).filter(
+                exists = session.query(User.username).filter(
                     User.username == user_validate).first()[0]
                 clear_console()
 
                 # [if username exists, prompt user for password]
                 if exists is not None:
                     password_validate = input('Enter Password: ').strip()
-                    password = db.session.query(User.password).filter(
+                    password = session.query(User.password).filter(
                         User.username == user_validate).first()[0]
 
                     clear_console()
 
-                    # [checking user input against password in db]
+                    # [checking user input against password in session]
                     if check_password_hash(password, password_validate) is True:
-                        db.session.commit()
+                        session.commit()
                         clear_console()
                         print('\nLogin Successfull')
                         time.sleep(2)

@@ -1,5 +1,5 @@
-from app.api.models.models import User, Leaderboard, db
-from ...wsgi import create_app
+from app.models import User, Leaderboard, session
+from ... import create_db
 from . import game_class as game
 from . import win_lose
 from .menu import clear_console
@@ -9,12 +9,11 @@ from .menu import clear_console
 
 class UpdateScore():
     def __init__(self):
-        self.app = create_app()
-        self.app.app_context().push()
+        self.db = create_db()
 
     # [insert new scores]
     def insert(self, player):
-        id = db.session.query(
+        id = session.query(
             Leaderboard.id).filter(Leaderboard.username == player).first()[0]
 
         # [retrieve user/leaderboard object based on id]
@@ -26,7 +25,7 @@ class UpdateScore():
         leaderboard.wins = wins
         leaderboard.losses = losses
 
-        db.session.commit()
+        session.commit()
         clear_console()
 
 

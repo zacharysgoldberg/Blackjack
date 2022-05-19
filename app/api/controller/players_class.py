@@ -4,8 +4,9 @@ from . login_auth import auth as login
 from . import menu
 import re
 import random
-from ...wsgi import create_app
-from app.api.models.models import Leaderboard, db, User
+from ... import create_db
+from app.models import Leaderboard, session, User
+from sqlalchemy.orm import sessionmaker
 
 
 ################## Creating Players ##################
@@ -16,8 +17,8 @@ from app.api.models.models import Leaderboard, db, User
 class Players:
 
     def __init__(self):
-        self.app = create_app()
-        self.app.app_context().push()
+        self.db = create_db()
+
         self.user_login = {'salt': secrets.token_hex(16),
                            'full_name': None,
                            'username': None,
@@ -64,7 +65,7 @@ class Players:
                     email = input('Enter email: ')
                     # [validate email and that it is not already in use]
                     valid_email = self.check_email(email)
-                    exists = db.session.query(User.id).filter(
+                    exists = session.query(User.id).filter(
                         User.email == email).first()
                     menu.clear_console()
 

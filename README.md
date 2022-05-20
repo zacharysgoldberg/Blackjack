@@ -1,13 +1,12 @@
 # Blackjack game
-
-[GUI still in development]
-Includes Flask libraries.
+Terminal-based blackjack game [GUI still in development].
+Utilizes SQLAlchemy's ORM and docker for management.
 Requires user to register account and login with valid credentials before playing. User account and leaderboard data is stored in a sqlite database (Development stage).
 
 ## Future improvements
 
-To include a python GUI that communicates with db/api, forget password/username, utilize NoSQL database, and deploy on Azure
+To include a Kivy mobile GUI, forget password/username, and integrate MongoDB.
 
 ## How to run/test
 
-Install requirements, and run blackjack.py in root dir.
+Install requirements, and run blackjack.py in root directory.

@@ -5,7 +5,7 @@ Requires user to register account and login before playing. User account and lea
 
 ## Future improvements
 
-To include a Kivy mobile GUI, forget password/username, and replace SQLite with MongoDB.
+To include a tkinter GUI, forget password/username, and replace SQLite with MongoDB.
 
 ## How to run/test
 

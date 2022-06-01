@@ -4,7 +4,7 @@ from . import menu
 import re
 import random
 from ... import create_db
-from app.models.models import Leaderboard, session, User
+from app.models import Leaderboard, session, User
 
 
 ################## Creating Players ##################

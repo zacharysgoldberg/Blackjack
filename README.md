@@ -1,13 +1,11 @@
 # Blackjack game
 
-[GUI still in development]
-Includes Flask libraries.
 Requires user to register account and login with valid credentials before playing. User account and leaderboard data is stored in a sqlite database (Development stage).
 
 ## Future improvements
 
-To include a python GUI that communicates with db/api, forget password/username, utilize NoSQL database, and deploy on Azure
+Forget password/username and implement Redis database
 
 ## How to run/test
 
-Install requirements, and run blackjack.py in root dir.
+From terminal, install requirements, and run blackjack.py in root dir.

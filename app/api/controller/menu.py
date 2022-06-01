@@ -1,6 +1,6 @@
 import os
 import csv
-from ...models.models import User, Leaderboard, session
+from ...models import User, Leaderboard, session
 from werkzeug.security import generate_password_hash
 
 

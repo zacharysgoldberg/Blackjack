@@ -25,37 +25,40 @@ class Auth():
 
         while True:
             user_validate = input(
-                'Enter username: ')
-            try:
-                # [check if username exists]
-                exists = session.query(User.username).filter(
-                    User.username == user_validate).first()[0]
-                clear_console()
-
-                # [if username exists, prompt user for password]
-                if exists is not None:
-                    password_validate = input('Enter Password: ').strip()
-                    password = session.query(User.password).filter(
-                        User.username == user_validate).first()[0]
+                'Enter username or email: ')
+            # [check if username exists]
+            exists = session.query(User).filter(
+                User.username == user_validate).first()
+            if exists is None:
+                try:
+                    exists = session.query(User).filter(
+                        User.email == user_validate).first()
 
                     clear_console()
 
-                    # [checking user input against password in session]
-                    if check_password_hash(password, password_validate) is True:
-                        session.commit()
-                        clear_console()
-                        print('\nLogin Successfull')
-                        time.sleep(2)
-                        return user_validate
+                except:
+                    clear_console()
+                    print('Username does not exist')
+                    return False
 
-                    elif check_password_hash(password_validate, password) is False:
-                        clear_console()
-                        print('Incorrect password')
-                        return False
-            except:
+            # [if username exists, prompt user for password]
+            if exists is not None:
+                password_validate = input('Enter Password: ').strip()
+
                 clear_console()
-                print('Username does not exist')
-                return False
+
+                # [checking user input against password in session]
+                if check_password_hash(exists.password, password_validate) is True:
+                    session.commit()
+                    clear_console()
+                    print('\nLogin Successfull')
+                    time.sleep(2)
+                    return user_validate
+
+                elif check_password_hash(exists.password, password_validate) is False:
+                    clear_console()
+                    print('Incorrect password')
+                    return False
 
 
 auth = Auth()

@@ -23,10 +23,8 @@ class UpdateAccount():
             return False
 
     def patch(self, player):
-        id = session.query(
-            User.id).filter(User.username == player).first()[0]
-
-        user = User.query.get(id)
+        # [get user object]
+        user = session.query(User).filter_by(username=player).first()
 
         clear_console()
 

@@ -13,11 +13,9 @@ class UpdateScore():
 
     # [insert new scores]
     def insert(self, player):
-        id = session.query(
-            Leaderboard.id).filter(Leaderboard.username == player).first()[0]
-
-        # [retrieve user/leaderboard object based on id]
-        leaderboard = Leaderboard.query.get(id)
+        # [retrieve user/leaderboard object]
+        leaderboard = session.query(
+            Leaderboard).filter_by(username=player).first()
 
         wins = int(leaderboard.wins) + int(win_lose.total_wins)
         losses = int(leaderboard.losses) + int(win_lose.total_losses)

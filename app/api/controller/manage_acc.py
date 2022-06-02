@@ -1,17 +1,16 @@
-from app.models import User, Leaderboard, session
-from ... import create_db
-from . import game_class as game
-from . menu import clear_console
 import re
 import time
+import json
+from . import game_class as game
+from . menu import clear_console
 from werkzeug.security import generate_password_hash
-from sqlalchemy.orm import sessionmaker
+from ... import db
 
 
 class UpdateAccount():
 
     def __init__(self):
-        self.db = create_db()
+        pass
 
     def check_email(self, email):
         regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
@@ -24,29 +23,33 @@ class UpdateAccount():
 
     def patch(self, player):
         # [get user object]
-        user = session.query(User).filter_by(username=player).first()
+        user = json.loads(db.execute_command('JSON.GET', player))
 
         clear_console()
 
         print("\n        === Blackjack Menu ===          ")
         print("------------------------------------------")
-        print("| 1.  Change Email  |  2. Change Password |")
+        print("| 1.  Update Name  |  2. Update Password |")
         print("------------------------------------------")
-        print('| 3.  Change Name   |  4. Return to Menu  |')
+        print('|            3. Return to Menu           |')
         print('------------------------------------------')
 
         while True:
             choice = input('Select an option: ')
             # [update email]
             if choice == '1':
-                new_email = input('Enter new email: ')
-                self.check_email(new_email)
-                user.email = new_email
+                # [update name]
+                name = input('Enter name: ').lower(
+                ).title().strip()
 
-                session.commit()
+                user['profile']['full_name'] = name
+
+                db.execute_command('JSON.SET', player, '.',
+                                   json.dumps(user))
+                db.save()
                 clear_console()
                 print(
-                    f"\nYour email ({new_email}) has been successfully updated.")
+                    f"\nYour name has successfully updated, {name}.")
                 break
 
             elif choice == '2':
@@ -54,28 +57,18 @@ class UpdateAccount():
 
                 if len(new_password) >= 8:
                     # [update password]
-                    user.password = generate_password_hash(
+                    user['profile']['password'] = generate_password_hash(
                         new_password, method='sha256')
 
-                    session.commit()
+                    db.execute_command('JSON.SET', player, '.',
+                                       json.dumps(user))
+                    db.save()
                     clear_console()
                     print(
-                        f"\nYour password has been successfully updated.")
+                        f"\nYour password has successfully updated.")
                     break
 
             elif choice == '3':
-                # [update name]
-                name = input('Enter new name: ').lower(
-                ).title().strip()
-                user.full_name = name
-
-                session.commit()
-                clear_console()
-                print(
-                    f"\nYour name ({name}) has been successfully updated.")
-                break
-
-            elif choice == '4':
                 # [return to main menu]
                 print('Returning to main menu..')
                 time.sleep(2)

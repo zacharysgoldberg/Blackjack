@@ -97,7 +97,7 @@ def main():
 
     # [upon exitting game, update leaderboard scores]
     if new_game.exit == False:
-        update.insert(new_game.user['Name'])
+        update.insert(new_game.user['Email'])
 
 
 main()

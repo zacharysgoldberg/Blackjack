@@ -4,7 +4,7 @@ from . import splitting
 from . import deck_class as deck
 from . import display_cards as disp
 from . import manage_acc as manage
-from .login_auth import auth
+from .login_auth import login
 from .players_class import players
 
 ############### Game setup #################
@@ -29,9 +29,9 @@ class Game:
             menu_choice = menu.main_menu()
 
             if menu_choice == '1':
-                username = auth.login()
+                username, email = login()
                 # [update user and dealer dict with game info]
-                self.user.update({'Name': username,
+                self.user.update({'Name': username, 'Email': email,
                                   'Chips': 100, 'Hand': [], 'Score': 0})
                 self.dealer.update({'Name': 'Dealer', 'Chips': 0, 'Hand': [],
                                     'Score': 0})

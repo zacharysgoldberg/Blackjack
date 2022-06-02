@@ -1,7 +1,7 @@
 import os
-from sqlalchemy import create_engine
+import redis
 
 
-def create_db():
-    engine = create_engine('sqlite:///app/api/db/blackjack.db', echo=True)
-    return engine
+db = redis.StrictRedis(
+    host="localhost", port=6379, decode_responses=True
+)

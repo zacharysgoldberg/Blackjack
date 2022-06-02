@@ -1,8 +1,8 @@
-venv
+uvenv
 instance
 images
 **__pycache__/
 *.vscode
-docker-compose.yml
+# docker-compose.yml
 gui.py
 images

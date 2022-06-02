@@ -1,5 +1,5 @@
-from app.models import User, Leaderboard, session
-from ... import create_db
+from ... import db
+import json
 from . import game_class as game
 from . import win_lose
 from .menu import clear_console
@@ -9,21 +9,21 @@ from .menu import clear_console
 
 class UpdateScore():
     def __init__(self):
-        self.db = create_db()
+        pass
 
     # [insert new scores]
     def insert(self, player):
-        # [retrieve user/leaderboard object]
-        leaderboard = session.query(
-            Leaderboard).filter_by(username=player).first()
+        user = json.loads(db.execute_command('JSON.GET', player))
 
-        wins = int(leaderboard.wins) + int(win_lose.total_wins)
-        losses = int(leaderboard.losses) + int(win_lose.total_losses)
+        wins = int(user['score']['wins']) + int(win_lose.total_wins)
+        losses = int(user['score']['losses']) + int(win_lose.total_losses)
 
-        leaderboard.wins = wins
-        leaderboard.losses = losses
+        user['score']['wins'] = wins
+        user['score']['losses'] = losses
 
-        session.commit()
+        db.execute_command('JSON.SET', player, '.', json.dumps(user))
+
+        db.save()
         clear_console()
 
 

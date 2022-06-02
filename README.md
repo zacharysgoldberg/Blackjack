@@ -1,11 +1,12 @@
 # Blackjack game
 
-Requires user to register account and login with valid credentials before playing. User account and leaderboard data is stored in a sqlite database (Development stage).
+Requires user to register account and login with valid credentials before playing. User account and leaderboard data is stored in a local redis database (Development stage).
+JSON objects for data storage (RedisJson), typical Blackjack game features including hit, stand, bet, split, and leaderboard scores.
 
 ## Future improvements
 
-Forget password/username and implement Redis database
+Forget password
 
 ## How to run/test
 
-From terminal, install requirements, and run blackjack.py in root dir.
+From terminal, install requirements `pip install -r requirements.txt`, run docker container for redis `docker run -p 6379:6379 --name redis-redisjson redislabs/rejson:latest`, and run `python blackjack.py` in root dir.

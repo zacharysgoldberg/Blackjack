@@ -1,8 +1,8 @@
-from sqlalchemy.ext.declarative import declarative_base
-import datetime
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, BigInteger, DateTime
-from sqlalchemy.orm import relationship, sessionmaker
-from app import create_db
+# import datetime
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import Column, Integer, String, Text, ForeignKey, BigInteger, DateTime
+# from sqlalchemy.orm import relationship, sessionmaker
+# from app import create_db
 
 
 db = create_db()

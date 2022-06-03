@@ -11,4 +11,4 @@ Will not include cloud based Redis database due to pricing restrictions to inclu
 
 ## How to play
 
-From terminal, install requirements `pip install -r requirements.txt`, pull docker image for RedisJson `docker pull redislabs/rejson`, then run docker container for redis database `docker run -p 6379:6379 --name redis-db redislabs/rejson:latest`, and run `python blackjack.py` in root dir.
+From terminal, install requirements `pip install -r requirements.txt`, pull docker image for RedisJson `docker pull redislabs/rejson`, then run docker container for redis database `docker run -p 6379:6379 --name redis-db redislabs/rejson:latest`, and run `python blackjack.py` in root directory.

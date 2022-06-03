@@ -1,6 +1,6 @@
 import json
 from .menu import clear_console
-from ... import db
+from .. import db
 from werkzeug.security import check_password_hash
 import time
 
@@ -22,7 +22,6 @@ def login():
 
                 password_validate = input('Enter Password: ').strip()
                 clear_console()
-
                 # [checking user input against password in session]
                 if check_password_hash(user['password'], password_validate) is True:
                     clear_console()
@@ -33,9 +32,9 @@ def login():
                 else:
                     clear_console()
                     print('Incorrect password')
-                    return False
+                    continue
         except BaseException as e:
             # clear_console()
-            print(email, 'does not exist')
+            print('Invalid Credentials')
             print(e)
             return False

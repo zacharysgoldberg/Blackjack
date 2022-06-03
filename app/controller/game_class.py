@@ -50,7 +50,7 @@ class Game:
 
                         if choice == '2':
                             # [player chooses to update account info]
-                            manage.update.patch(self.user['Name'])
+                            manage.update.patch(self.user['Email'])
                             continue
 
                         elif choice == '3':

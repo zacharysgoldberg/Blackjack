@@ -4,7 +4,7 @@ import json
 from . import game_class as game
 from . menu import clear_console
 from werkzeug.security import generate_password_hash
-from ... import db
+from .. import db
 
 
 class UpdateAccount():

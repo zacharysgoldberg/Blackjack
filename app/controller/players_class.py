@@ -1,6 +1,6 @@
 from . import menu
 import re
-from ... import db
+from .. import db
 
 
 ################## Creating Players ##################

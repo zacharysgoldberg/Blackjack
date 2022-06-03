@@ -1,5 +1,5 @@
 import os
-from ... import db
+from .. import db
 import json
 from werkzeug.security import generate_password_hash
 

@@ -1,4 +1,4 @@
-from ... import db
+from .. import db
 import json
 from . import game_class as game
 from . import win_lose

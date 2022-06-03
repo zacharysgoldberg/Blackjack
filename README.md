@@ -8,7 +8,7 @@ Typical Blackjack game features including hit, stand, bet, split, and leaderboar
 
 Forget password
 
-## How to run/test
+## How to play
 
 From terminal, install requirements `pip install -r requirements.txt`\
 run docker container for redis `docker run -p 6379:6379 --name redis-redisjson redislabs/rejson:latest`\

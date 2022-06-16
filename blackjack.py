@@ -1,9 +1,9 @@
-from app.controller import betting
-from app.controller import hit_stand
-from app.controller import win_lose
-from app.controller import menu
-from app.controller.game_class import new_game
-from app.controller.leaderboard_class import update
+from app.src import betting
+from app.src import hit_stand
+from app.src import win_lose
+from app.src import menu
+from app.src.game_class import new_game
+from app.src.leaderboard_class import update
 
 ################# Game logic #################
 

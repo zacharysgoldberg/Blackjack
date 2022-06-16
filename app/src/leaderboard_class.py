@@ -1,6 +1,6 @@
 from .. import db
 import json
-from . import game_class as game
+from datetime import datetime
 from . import win_lose
 from .menu import clear_console
 
@@ -8,9 +8,6 @@ from .menu import clear_console
 
 
 class UpdateScore():
-    def __init__(self):
-        pass
-
     # [insert new scores]
     def insert(self, player):
         user = json.loads(db.execute_command('JSON.GET', player))
@@ -20,6 +17,7 @@ class UpdateScore():
 
         user['score']['wins'] = wins
         user['score']['losses'] = losses
+        user['score']['last_game'] = str(datetime.now())
 
         db.execute_command('JSON.SET', player, '.', json.dumps(user))
 

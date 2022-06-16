@@ -8,10 +8,6 @@ from .. import db
 
 
 class UpdateAccount():
-
-    def __init__(self):
-        pass
-
     def check_email(self, email):
         regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
 

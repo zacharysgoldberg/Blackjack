@@ -11,4 +11,4 @@ Will not include cloud based Redis database due to pricing restrictions to inclu
 
 ## How to play
 
-From root directory, install requirements: `pip install -r requirements.txt`, build docker image for RedisJson: `docker-compose up -d`, and run `python blackjack.py`.
+From root directory, install dependencies: `pip install -r requirements.txt`, build docker image for RedisJson: `docker-compose up -d`, and run `python blackjack.py`.

@@ -7,7 +7,7 @@ Typical Blackjack game features including hit, stand, bet, split, and leaderboar
 ## Future improvements
 
 Forget password.
-Will not include cloud based Redis database due to pricing restrictions to include RedisJson module.
+Will not include cloud based Redis database due to price restrictions to include RedisJson module.
 
 ## How to play
 

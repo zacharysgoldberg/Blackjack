@@ -21,7 +21,7 @@ class UpdateScore():
 
         db.execute_command('JSON.SET', player, '.', json.dumps(user))
 
-        db.save()
+        # db.save()
         clear_console()
 
 

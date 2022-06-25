@@ -5,3 +5,4 @@ images
 *.vscode
 # docker-compose.yml
 gui.py
+.env

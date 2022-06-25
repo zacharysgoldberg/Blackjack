@@ -48,6 +48,7 @@ def new_register(full_name, username, email, password, wins=0, losses=0, last_ga
         'profile': {
             'full_name': full_name,
             'username': username,
+            'email': email,
             'password': generate_password_hash(password, method='sha256')
         },
         'score': {
@@ -58,7 +59,7 @@ def new_register(full_name, username, email, password, wins=0, losses=0, last_ga
     }
     db.execute_command('JSON.SET', email, '.', json.dumps(record))
 
-    db.save()
+    # db.save()
     clear_console()
     print(
         f"\n{username} has been registered")

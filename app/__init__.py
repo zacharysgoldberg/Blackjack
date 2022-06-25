@@ -1,7 +1,9 @@
 import os
 import redis
+from dotenv import load_dotenv
 
+load_dotenv()
 
 db = redis.StrictRedis(
-    host="localhost", port=6379, decode_responses=True
+    host=os.getenv('REDIS_HOST'), port=os.getenv('REDIS_PORT'), password=os.getenv('REDIS_PASSWORD'), decode_responses=True
 )

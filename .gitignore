@@ -6,4 +6,4 @@ images
 # docker-compose.yml
 gui.py
 .env
-docker-compose.yml
+**docker-compose.yml

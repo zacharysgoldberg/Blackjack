@@ -8,7 +8,3 @@ Typical Blackjack game features including hit, stand, bet, split, and leaderboar
 
 Activate venv `. venv/scripts/activate` for windows. Then run `python blackjack.py`.
 
-## Alternatively
-
-[Hosted on Replit](https://replit.com/@zacharysgoldber/Blackjack?v=1):
-Hit Run and then type in the command `python main.py`

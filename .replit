@@ -84,25 +84,3 @@ supportsProgressReporting = true
 supportsRunInTerminalRequest = true
 supportsVariablePaging = true
 supportsVariableType = true
-
-    # How to tell the debugger to start the debuggee application.
-[debugger.interactive.launchMessage]
-command = "attach"
-type = "request"
-
-[debugger.interactive.launchMessage.arguments]logging = {}
-
-# Configures the packager.
-[packager]
-# Search packages in PyPI.
-language = "python3"
-# Never attempt to install `unit_tests`. If there are packages that are being
-# guessed wrongly, add them here.
-ignoredPackages = ["unit_tests"]
-
-[packager.features]
-enabledForHosting = false
-  # Enable searching packages from the sidebar.
-packageSearch = true
-  # Enable guessing what packages are needed from the code.
-guessImports = true

@@ -39,11 +39,18 @@ class Players:
 
     def register(self):
         while True:
-            self.user_login['full_name'] = input(
+            print('Press "q" at any time to return to the menu')
+            full_name = input(
                 'Enter full name to register: ')
-            full_name = self.user_login['full_name'].replace(" ", "")
+            if full_name == 'q':
+                return
 
+            self.user_login['full_name'] = full_name.replace(" ", "")
             email = input('Enter email: ')
+
+            if email == 'q':
+                return
+
             # [validate email and that it is not already in use]
             valid_email = self.check_email(email)
             username = email.split('@')[0]

@@ -9,8 +9,11 @@ def login():
     print('\nLOGIN')
 
     while True:
+        print('Press "q" at any time to return to the menu')
         email = input(
-            'Enter email: ')
+            "Enter email: ")
+        if email == 'q':
+            return None, None
         try:
             # [check if username exists]
             exists = db.exists(email)
@@ -31,8 +34,11 @@ def login():
 
                 else:
                     clear_console()
-                    print('Incorrect password')
+                    print('Incorrect password\n')
                     continue
+            print('\nEmail does not exist')
+            return None, None
+
         except BaseException as e:
             # clear_console()
             print('Invalid Credentials')

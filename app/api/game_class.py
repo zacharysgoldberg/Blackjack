@@ -30,6 +30,8 @@ class Game:
 
             if menu_choice == '1':
                 username, email = login()
+                if username == None or email == None:
+                    continue
                 # [update user and dealer dict with game info]
                 self.user.update({'Name': username, 'Email': email,
                                   'Chips': 100, 'Hand': [], 'Score': 0})
@@ -74,7 +76,7 @@ class Game:
                 self.exit = True
                 return
             else:
-                print('Invalid Option')
+                continue
 
     # [deal 2 cards to both dealer and user]
 

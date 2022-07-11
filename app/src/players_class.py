@@ -44,6 +44,10 @@ class Players:
             full_name = self.user_login['full_name'].replace(" ", "")
 
             email = input('Enter email: ')
+
+            if full_name == 'q' or email == 'q':
+                return
+            
             # [validate email and that it is not already in use]
             valid_email = self.check_email(email)
             username = email.split('@')[0]

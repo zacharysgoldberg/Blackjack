@@ -11,6 +11,9 @@ def login():
     while True:
         email = input(
             'Enter email: ')
+        if email == 'q':
+            return
+        
         try:
             # [check if username exists]
             exists = db.exists(email)

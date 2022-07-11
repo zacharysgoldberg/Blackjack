@@ -11,4 +11,4 @@ From root directory, install dependencies: `pip install -r requirements.txt`, an
 ## Alternatively
 
 [Hosted on Replit](https://replit.com/@zacharysgoldber/Blackjack?v=1):
-Hit Run and then type in the command `python main.py`
+Hit Run and then type in the command `python blackjack.py`

@@ -1,6 +1,3 @@
-# The primary language of the repl. There can be others, though!
 language = "python3"
-# The command that runs the program. Commented out because it is not run when the interpreter command is set
 run = "pip install -r requirements.txt"
-
 

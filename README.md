@@ -11,4 +11,4 @@ Activate venv `. venv/scripts/activate` for windows and `. uvenv/bin/activate` f
 ## Alternatively
 
 [Hosted on Replit](https://replit.com/@zacharysgoldber/Blackjack?v=1):
-Hit Run and then type in the command `python blackjack.py`
+Hit Run and then type in the command `python main.py`

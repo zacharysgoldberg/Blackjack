@@ -6,9 +6,9 @@ Typical Blackjack game features including hit, stand, bet, split, and leaderboar
 
 ## How to play
 
-From root directory, install dependencies: `pip install -r requirements.txt`, and run `python blackjack.py`.
+Activate venv `. venv/scripts/activate` for windows and `. uvenv/bin/activate` for unix/linux. Then run `python blackjack.py`.
 
 ## Alternatively
 
 [Hosted on Replit](https://replit.com/@zacharysgoldber/Blackjack?v=1):
-Hit Run and then type in the command `python blackjack.py`
+Hit Run and then type in the command `python main.py`

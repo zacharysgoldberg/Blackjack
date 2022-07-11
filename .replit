@@ -8,10 +8,6 @@ language = "python3"
 # be hidden in the workspace.
 hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
 
-# Specifies which nix channel to use when building the environment.
-[nix]
-channel = "stable-21_11"
-
 # Per-language configuration: python3
 [languages.python3]
 # Treats all files that end with `.py` as Python.
